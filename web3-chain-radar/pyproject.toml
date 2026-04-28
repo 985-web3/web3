@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [
-  { name = "xjh277826844" }
+  { name = "985-web3" }
 ]
 dependencies = [
   "httpx>=0.27.0",
@@ -22,4 +22,3 @@ web3-chain-radar-mcp = "web3_chain_radar_mcp.server:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/web3_chain_radar_mcp"]
-

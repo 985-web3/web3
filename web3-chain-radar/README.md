@@ -16,7 +16,7 @@ It scans token rankings, classifies narratives, checks basic safety signals, and
 ## Quick Install
 
 ```bash
-cd web3-链上雷达
+cd web3-chain-radar
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e .

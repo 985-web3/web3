@@ -9,14 +9,14 @@
 
 ---
 
-`web3-链上雷达` 是一个 Web3 链上扫描 MCP 服务。
+`web3-链上雷达` 是一个 Web3 链上扫描 MCP 服务，项目目录名为 `web3-chain-radar`。
 
 它会扫描代币排行、识别叙事、检查基础安全信号，并把候选结果返回给 AI。
 
 ## 快速安装
 
 ```bash
-cd web3-链上雷达
+cd web3-chain-radar
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e .
