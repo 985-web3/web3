@@ -1,0 +1,11 @@
+{
+  "name": "web3-chain-radar-en",
+  "version": "0.1.0",
+  "description": "English skill docs for the on-chain narrative and momentum scanning MCP server.",
+  "mcpServers": {
+    "web3-chain-radar": {
+      "command": "web3-chain-radar-mcp"
+    }
+  }
+}
+

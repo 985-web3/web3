@@ -1,0 +1,11 @@
+{
+  "name": "web3-chain-radar-zh",
+  "version": "0.1.0",
+  "description": "中文说明：链上新币叙事与动量扫描 MCP 技能。",
+  "mcpServers": {
+    "web3-chain-radar": {
+      "command": "web3-chain-radar-mcp"
+    }
+  }
+}
+
