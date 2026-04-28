@@ -1,4 +1,13 @@
-# web3-链上雷达
+<p align="center">
+  <b>web3-链上雷达</b><br>
+  On-chain Narrative Radar · MCP Server · Safety Signals · Momentum Ranking
+</p>
+
+<p align="center">
+  <a href="./README.md">English</a> | <a href="./docs/README_ZH.md">中文</a>
+</p>
+
+---
 
 Web3 on-chain narrative radar packaged as an MCP server. It is based on the original single-file radar script, but reorganized into installable modules and MCP tools.
 
@@ -29,6 +38,8 @@ Classifies a token name and symbol into the radar narrative taxonomy.
 web3-链上雷达/
   pyproject.toml
   .env.example
+  docs/
+    README_ZH.md
   src/web3_chain_radar_mcp/
     server.py
     config.py
