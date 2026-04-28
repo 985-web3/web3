@@ -1,6 +1,6 @@
 <p align="center">
   <b>web3-链上雷达</b><br>
-  链上叙事雷达 · MCP 服务 · 安全信号 · 动量排序
+  给 AI 用的链上叙事雷达
 </p>
 
 <p align="center">
@@ -9,71 +9,11 @@
 
 ---
 
-`web3-链上雷达` 是一个 Web3 链上扫描 MCP 服务。它来自原始的单文件雷达脚本，但已经被拆成可安装的模块、客户端和 MCP 工具，便于 AI 调用、维护和继续扩展。
+`web3-链上雷达` 是一个 Web3 链上扫描 MCP 服务。
 
-这个项目负责：
+它会扫描代币排行、识别叙事、检查基础安全信号，并把候选结果返回给 AI。
 
-- 扫描 GMGN 排行里的新币和活跃币
-- 识别叙事分类，例如马斯克/川普、币安/CZ、名人热点、普通新叙事
-- 检查基础安全信号，例如 RugCheck 和 GoPlus
-- 返回结构化候选列表给 AI
-
-这个项目不会：
-
-- 自动买卖
-- 连接钱包
-- 保存私钥
-- 提交交易
-
-## 可用工具
-
-### `scan_onchain_narratives`
-
-扫描链上代币并返回结构化结果。
-
-常用参数：
-
-- `chains`：链名，默认 `eth,bsc,base,sol`
-- `limit_per_chain`：每条链每个 GMGN 端点最多抓多少条
-- `include_safety`：是否检查基础安全风险
-- `strict_safety`：是否直接过滤不安全或检查失败的代币
-- `include_profiles`：是否补充 DexScreener 社交链接
-- `max_results`：最多返回多少条候选
-
-### `classify_token_narrative`
-
-只根据代币名称、符号、链来判断叙事分类。
-
-## 项目结构
-
-```text
-web3-链上雷达/
-  pyproject.toml
-  .env.example
-  docs/
-    README_ZH.md
-  src/web3_chain_radar_mcp/
-    server.py
-    config.py
-    clients/
-      gmgn.py
-      dexscreener.py
-      safety.py
-    services/
-      narrative.py
-      momentum.py
-    tools/
-      onchain.py
-  openclaw-skill/
-    web3-chain-radar-zh/
-      SKILL.md
-      package.json
-    web3-chain-radar-en/
-      SKILL.md
-      package.json
-```
-
-## 安装
+## 快速安装
 
 ```bash
 cd web3-链上雷达
@@ -82,13 +22,13 @@ source .venv/bin/activate
 pip install -e .
 ```
 
-## 启动 MCP
+## 启动
 
 ```bash
 web3-chain-radar-mcp
 ```
 
-示例 MCP 配置：
+## MCP 配置
 
 ```json
 {
@@ -103,18 +43,28 @@ web3-chain-radar-mcp
 }
 ```
 
-## 环境变量
+## 可用工具
 
-如果你想保留本地默认配置，可以把 `.env.example` 复制为 `.env`：
+### `scan_onchain_narratives`
 
-```bash
-cp .env.example .env
-```
+扫描 GMGN 排行代币，返回叙事、动量、流动性、成交量和基础安全信号。
 
-当前版本不需要钱包私钥，也不需要交易权限。`TG_BOT_TOKEN` 和 `TG_CHAT_ID` 只是为后续可选的 Telegram 推送预留。
+常用参数：
+
+- `chains`：默认 `eth,bsc,base,sol`
+- `include_safety`：是否检查安全
+- `strict_safety`：是否过滤不安全代币
+- `include_profiles`：是否补充社交链接
+- `max_results`：最多返回多少条
+
+### `classify_token_narrative`
+
+只根据名称、符号和链判断叙事分类。
 
 ## 说明
 
-- 安全接口可能限流或暂时不可用，使用时要检查 `safety.checked`
+- 不需要私钥
+- 不连接钱包
+- 不执行交易
+- 安全接口可能限流
 - 严格动量判断依赖同一个 MCP 进程内的连续多次调用
-- 这是研究工具，不构成投资建议

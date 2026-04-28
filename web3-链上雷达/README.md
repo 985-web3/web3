@@ -1,6 +1,6 @@
 <p align="center">
   <b>web3-链上雷达</b><br>
-  On-chain Narrative Radar · MCP Server · Safety Signals · Momentum Ranking
+  On-chain narrative radar for AI agents
 </p>
 
 <p align="center">
@@ -9,59 +9,11 @@
 
 ---
 
-Web3 on-chain narrative radar packaged as an MCP server. It is based on the original single-file radar script, but reorganized into installable modules and MCP tools.
+Web3 on-chain narrative radar packaged as an MCP server.
 
-This project scans token rankings, classifies narratives, checks basic safety signals, and returns ranked candidates for an AI agent. It does not trade, hold private keys, or submit transactions.
+It scans token rankings, classifies narratives, checks basic safety signals, and returns ranked candidates for an AI agent.
 
-## Tools
-
-### `scan_onchain_narratives`
-
-Scans GMGN ranked tokens across selected chains and returns narrative, momentum, liquidity, volume, and safety signals.
-
-Parameters:
-
-- `chains`: comma-separated chains, default `eth,bsc,base,sol`
-- `limit_per_chain`: max GMGN rows per endpoint, default `50`
-- `include_safety`: use RugCheck for Solana and GoPlus for EVM chains
-- `strict_safety`: drop tokens when safety is unavailable or unsafe
-- `include_profiles`: fetch social links from DexScreener
-- `max_results`: number of candidates returned
-
-### `classify_token_narrative`
-
-Classifies a token name and symbol into the radar narrative taxonomy.
-
-## Project Structure
-
-```text
-web3-链上雷达/
-  pyproject.toml
-  .env.example
-  docs/
-    README_ZH.md
-  src/web3_chain_radar_mcp/
-    server.py
-    config.py
-    clients/
-      gmgn.py
-      dexscreener.py
-      safety.py
-    services/
-      narrative.py
-      momentum.py
-    tools/
-      onchain.py
-  openclaw-skill/
-    web3-chain-radar-zh/
-      SKILL.md
-      package.json
-    web3-chain-radar-en/
-      SKILL.md
-      package.json
-```
-
-## Install
+## Quick Install
 
 ```bash
 cd web3-链上雷达
@@ -70,13 +22,13 @@ source .venv/bin/activate
 pip install -e .
 ```
 
-## Run MCP Server
+## Run
 
 ```bash
 web3-chain-radar-mcp
 ```
 
-Example MCP config:
+## MCP Config
 
 ```json
 {
@@ -91,19 +43,28 @@ Example MCP config:
 }
 ```
 
-## Environment
+## Tools
 
-Copy `.env.example` to `.env` if you want local defaults.
+### `scan_onchain_narratives`
 
-```bash
-cp .env.example .env
-```
+Scan GMGN-ranked tokens across selected chains and return narrative, momentum, liquidity, volume, and safety signals.
 
-Current scanning works without private keys or wallet access. Telegram variables are reserved for a later optional delivery feature.
+Common parameters:
+
+- `chains`: `eth,bsc,base,sol`
+- `include_safety`: `true` or `false`
+- `strict_safety`: `true` or `false`
+- `include_profiles`: `true` or `false`
+- `max_results`: number of candidates returned
+
+### `classify_token_narrative`
+
+Classify a token name and symbol into the radar narrative taxonomy.
 
 ## Notes
 
-- Safety APIs can be rate-limited or unavailable. Check `safety.checked` before relying on a safety result.
-- Strict momentum needs repeated calls in the same running MCP server process.
-- This is research tooling, not financial advice.
-
+- No private keys
+- No wallet access
+- No trading execution
+- Safety APIs may be rate-limited
+- Strict momentum needs repeated calls in the same MCP process
